@@ -9,5 +9,5 @@
   "devDependencies": {
     "docsify-cli": "^4.2.1"
   },
-  "license": "GNU"
+  "license": "APACHE"
 }
