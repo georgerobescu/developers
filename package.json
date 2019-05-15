@@ -9,5 +9,5 @@
   "devDependencies": {
     "docsify-cli": "^4.2.1"
   },
-  "license": "APACHE"
+  "license": "Apache-2.0"
 }
