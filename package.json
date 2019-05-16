@@ -1,5 +1,5 @@
 {
-  "name": "airswap-developer-docs",
+  "name": "@airswap/developers",
   "version": "1.0.0",
   "description": "AirSwap Developer Docs",
   "main": "./src/index.html",
@@ -7,7 +7,7 @@
     "docs:serve": "docsify serve ./docs"
   },
   "devDependencies": {
-    "docsify-cli": "^4.2.1"
+    "docsify-cli": "^4.3.0"
   },
   "license": "Apache-2.0"
 }
