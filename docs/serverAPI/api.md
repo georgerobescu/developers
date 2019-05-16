@@ -94,9 +94,9 @@ All endpoints only accept POST requests with a JSON body.
 - **Data Params**
 
   ```json
-    {
-      "address": string,
-    }
+  {
+    "address": string
+  }
   ```
 
 - **Sample Call:**
@@ -116,12 +116,14 @@ All endpoints only accept POST requests with a JSON body.
   - **Content:**
 
   ```json
-  [{
-    "address": "0x2369267687a84ac7b494dae2f1542c40e37f4455",
-    "makerToken": "0xcc1cbd4f67cceb7c001bd4adf98451237a193ff8",
-    "takerToken": "0x0000000000000000000000000000000000000000",
-    "role": "maker"
-  }]
+  [
+    {
+      "address": "0x2369267687a84ac7b494dae2f1542c40e37f4455",
+      "makerToken": "0xcc1cbd4f67cceb7c001bd4adf98451237a193ff8",
+      "takerToken": "0x0000000000000000000000000000000000000000",
+      "role": "maker"
+    }
+  ]
   ```
 
 - **Notes:**
@@ -183,6 +185,108 @@ All endpoints only accept POST requests with a JSON body.
     "v": 27,
     "r": "0xd0382d77c3adf0641f05f64a49cf5011a0324129fddf961dfc7c98732e58a42e",
     "s": "0x3f671cbd665786459b516f3ae054aa6742e049449c8271a3f5c44e8c1925e4d0"
+  }
+  ```
+
+## getQuote
+
+---
+
+- **URL**
+
+  `/getQuote`
+
+- **Data Params**
+
+  ```js
+  {
+      "makerAddress": string,
+      "makerToken": string,
+      "takerToken": string,
+      "makerAmount"?: string,
+      "takerAmount"?: string,
+  }
+  ```
+
+- **Sample Call:**
+
+  ```bash
+    curl -X POST \
+      http://localhost:5005/getQuote \
+      -H 'Cache-Control: no-cache' \
+      -H 'Content-Type: application/json' \
+      -H 'Postman-Token: 4fc1a07a-0fde-457c-a3d4-9288a529004f' \
+      -d '{
+    "makerAddress": "0x1550d41be3651686e1aeeea073d8d403d0bd2e30",
+    "makerToken": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+    "takerToken": "0x0000000000000000000000000000000000000000",
+    "makerAmount": "100000000000000000000"
+    }'
+  ```
+
+- **Sample Response:**
+
+  - **Code:** 200 <br />
+  - **Content:**
+
+  ```json
+  {
+    "makerAddress": "0x1550d41be3651686e1aeeea073d8d403d0bd2e30",
+    "makerAmount": "100000000000000000000",
+    "makerToken": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+    "takerAmount": "394652714438327229",
+    "takerToken": "0x0000000000000000000000000000000000000000"
+  }
+  ```
+
+- **Notes:**
+  You should only specify one of EITHER makerAmount OR takerAmount in the data params. The maker who is providing the quote will fill in the other side in their response.
+
+## getMaxQuote
+
+---
+
+- **URL**
+
+  `/getMaxQuote`
+
+- **Data Params**
+
+  ```js
+  {
+    "makerAddress": string,
+    "makerToken": string,
+    "takerToken": string,
+  }
+  ```
+
+- **Sample Call:**
+
+  ```bash
+  curl -X POST \
+  http://localhost:5005/getMaxQuote \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 7237a3bf-4cf6-494b-9792-02c703333173' \
+  -d '{
+  "makerAddress": "0x1550d41be3651686e1aeeea073d8d403d0bd2e30",
+  "makerToken": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+  "takerToken": "0x0000000000000000000000000000000000000000"
+  }'
+  ```
+
+- **Sample Response:**
+
+  - **Code:** 200 <br />
+  - **Content:**
+
+  ```json
+  {
+    "makerAddress": "0x1550d41be3651686e1aeeea073d8d403d0bd2e30",
+    "makerAmount": "160620564837625881613380",
+    "makerToken": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+    "takerAmount": "634403212441595956115",
+    "takerToken": "0x0000000000000000000000000000000000000000"
   }
   ```
 
@@ -315,24 +419,24 @@ All endpoints only accept POST requests with a JSON body.
 
   ```json
   {
-      "nonce": 20,
-      "gasPrice": {
-          "_bn": "9502f9000"
-      },
-      "gasLimit": {
-          "_bn": "27100"
-      },
-      "to": "0x07fC7c43D8168a2730344E5CF958aaecc3B42B41",
-      "value": {
-          "_bn": "0"
-      },
-      "data": "0x1d4d691d00000000000000000000000060834d72a52b0ddc1601f7739f44632ccfbf38860000000000000000000000000000000000000000000000000000000000002710000000000000000000000000cc1cbd4f67cceb7c001bd4adf98451237a193ff800000000000000000000000061ba956bb7d4e7146efaf74ccf327d213e96713c00000000000000000000000000000000000000000000000000038d7ea4c680000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005b575d0e0000000000000000000000000000000000000000000000000000000000001942000000000000000000000000000000000000000000000000000000000000001bab65c90919c2bbb31764dcc450a9d4fffbabddf8363b7b1dc5a0ef22352746353d099c0af5f1ecc2ccf7999160d6d62f3c1fc16c66749a527962b804e990aefb",
-      "v": 43,
-      "r": "0x87288ad9ac4b15fed159857cb30a46c6ddb52f48cae1fb05820732596dcf27ca",
-      "s": "0x68a284764d3b97093ad0196cc68abc8fce676f41e2484ac5a1762a372527f390",
-      "chainId": 4,
-      "from": "0x61ba956Bb7D4e7146eFaf74Ccf327d213e96713C",
-      "hash": "0x9bac349471a0553abb9aa146ca68296c1987a57cdc8e1062be73fed95194aaf4"
+    "nonce": 20,
+    "gasPrice": {
+      "_bn": "9502f9000"
+    },
+    "gasLimit": {
+      "_bn": "27100"
+    },
+    "to": "0x07fC7c43D8168a2730344E5CF958aaecc3B42B41",
+    "value": {
+      "_bn": "0"
+    },
+    "data": "0x1d4d691d00000000000000000000000060834d72a52b0ddc1601f7739f44632ccfbf38860000000000000000000000000000000000000000000000000000000000002710000000000000000000000000cc1cbd4f67cceb7c001bd4adf98451237a193ff800000000000000000000000061ba956bb7d4e7146efaf74ccf327d213e96713c00000000000000000000000000000000000000000000000000038d7ea4c680000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005b575d0e0000000000000000000000000000000000000000000000000000000000001942000000000000000000000000000000000000000000000000000000000000001bab65c90919c2bbb31764dcc450a9d4fffbabddf8363b7b1dc5a0ef22352746353d099c0af5f1ecc2ccf7999160d6d62f3c1fc16c66749a527962b804e990aefb",
+    "v": 43,
+    "r": "0x87288ad9ac4b15fed159857cb30a46c6ddb52f48cae1fb05820732596dcf27ca",
+    "s": "0x68a284764d3b97093ad0196cc68abc8fce676f41e2484ac5a1762a372527f390",
+    "chainId": 4,
+    "from": "0x61ba956Bb7D4e7146eFaf74Ccf327d213e96713C",
+    "hash": "0x9bac349471a0553abb9aa146ca68296c1987a57cdc8e1062be73fed95194aaf4"
   }
   ```
 
@@ -378,14 +482,14 @@ All endpoints only accept POST requests with a JSON body.
   {
     "nonce": 21,
     "gasPrice": {
-        "_bn": "9502f9000"
+      "_bn": "9502f9000"
     },
     "gasLimit": {
-        "_bn": "27100"
+      "_bn": "27100"
     },
     "to": "0xc778417E063141139Fce010982780140Aa0cD5Ab",
     "value": {
-        "_bn": "0"
+      "_bn": "0"
     },
     "data": "0x2e1a7d4d000000000000000000000000000000000001ed09bead87c0378d8e6400000000",
     "v": 44,
@@ -463,11 +567,11 @@ All endpoints only accept POST requests with a JSON body.
 
 - **Notes:**
   The `config` key in data params is optional.
-  
+
 ## registerPGPKey
 
 ---
-  
+
 - **URL**
 
 `/registerPGPKey`
@@ -476,7 +580,7 @@ All endpoints only accept POST requests with a JSON body.
 
 ```bash
 curl -X POST \
-  http://localhost:5005/registerPGPKey 
+  http://localhost:5005/registerPGPKey
 ```
 
 - **Sample Response:**

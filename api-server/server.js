@@ -26,7 +26,7 @@ const asyncMiddleware = fn => (req, res, next) => {
 // Relay getOrder requests from other peers to the order server
 airswap.RPC_METHOD_ACTIONS.getOrder = msg => {
   let { params } = msg
-  if(typeof params === 'string' && params.startsWith('-----BEGIN PGP MESSAGE-----')){
+  if (typeof params === 'string' && params.startsWith('-----BEGIN PGP MESSAGE-----')) {
     params = airswap.decryptPGPMessage(params)
   }
   params.makerAddress = airswap.wallet.address
@@ -94,17 +94,26 @@ app.post(
   }),
 )
 
+app.post(
+  '/getQuote',
+  asyncMiddleware(async (req, res) => {
+    const { makerAddress, makerToken, takerToken, makerAmount, takerAmount } = req.body
+    const quote = await airswap.getQuote({ makerAddress, makerToken, takerToken, makerAmount, takerAmount })
+    sendResponse(res, quote)
+  }),
+)
+
+app.post(
+  '/getMaxQuote',
+  asyncMiddleware(async (req, res) => {
+    const { makerAddress, makerToken, takerToken } = req.body
+    const quote = await airswap.getMaxQuote({ makerAddress, makerToken, takerToken })
+    sendResponse(res, quote)
+  }),
+)
+
 app.post('/signOrder', (req, res) => {
-  const {
-    makerAddress,
-    makerAmount,
-    makerToken,
-    takerAddress,
-    takerAmount,
-    takerToken,
-    expiration,
-    nonce,
-  } = req.body
+  const { makerAddress, makerAmount, makerToken, takerAddress, takerAmount, takerToken, expiration, nonce } = req.body
   sendResponse(
     res,
     airswap.signOrder({

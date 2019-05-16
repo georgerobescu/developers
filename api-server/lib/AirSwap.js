@@ -11,7 +11,7 @@ const { Contract, Wallet, utils, providers } = ethers
 
 const TIMEOUT = 12000
 const INDEXER_ADDRESS = '0x0000000000000000000000000000000000000000'
-const IPFS_URL = 'https://ipfs.infura.io:5001'
+const IPFS_URL = 'https://ipfs.airswap.io:443'
 
 const ipfs = require('nano-ipfs-store').at(IPFS_URL)
 
@@ -64,7 +64,11 @@ class AirSwap {
     this.REJECTORS = {}
     this.TIMEOUTS = {}
     this.pgpKeys = {}
+
+    // Inform the user if the address powering this instance has registered PGP keys for KeySpace protocol communication
     this.getPGPKey(this.wallet.address)
+      .then(() => console.log('KeySpace PGP key is registered for this address!'))
+      .catch(e => console.log(e.message))
 
     // User defined methods that will be invoked by peers on the JSON-RPC
     this.RPC_METHOD_ACTIONS = rpcActions
@@ -473,8 +477,7 @@ class AirSwap {
         this.pgpKeys[address] = await ipfs.cat(ipfsHash)
         return this.pgpKeys[address]
       } catch (e) {
-        console.log('PGP key is not registered for this address')
-        return null
+        throw new Error('PGP key is not registered for this address')
       }
     }
   }
