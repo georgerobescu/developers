@@ -183,6 +183,36 @@ body .sidebar-toggle span:nth-child(3) {
   body .social-container {
     display: none;
   }
+
+  #ethny-banner-container {
+    height: 5vh;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90vw;
+    top: 91vh;
+    padding: 3vh;
+    z-index: 10;
+    border-radius: 35px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  #ethny-copy {
+    border-left: 2.5vw solid transparent;
+    border-right: 2.5vw solid transparent;
+  }
+
+  #ethny-close {
+    width: 3vw;
+  }
+}
+
+@media screen and (min-width: 1350px) {
+  #ethny-close {
+    width: 0.7vw;
+  }
+
 }
 
 /****** Markdown General ******/

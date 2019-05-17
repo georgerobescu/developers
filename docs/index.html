@@ -29,10 +29,7 @@
         <img id="ethny-close-svg" src="./assets/ethny/close.svg" alt="close">
       </div>
       <div id="ethny-copy">
-         Joining Us at ETHNY? &nbsp; Learn More
-      </div>
-      <div id="ethny-learn-more">
-        <img src="./assets/ethny/learn-more.svg" alt="learn-more">
+         Joining Us for ETHNY? &nbsp; Learn More
       </div>
     </div>
   </div>
@@ -72,10 +69,10 @@
   </script>
   <script type="text/javascript">
     document.addEventListener('click', function(e) {
-      if (e.target && (e.target.id == 'ethny-banner-container' || e.target.id == 'ethny-copy' || e.target.id == 'ethny-learn-more')) {
+      if (e.target && (e.target.id === 'ethny-banner-container' || e.target.id === 'ethny-copy')) {
         window.open('https://medium.com/fluidity/airswap-ethnewyork-cf2d405c9926');
       } else if (e.target && e.target.id == 'ethny-close' || e.target.id == 'ethny-close-svg') {
-        document.getElementById('ethny-banner-container').style.right = '-70vw';
+        document.getElementById('ethny-banner-container').style.right = '-80vw';
       } else {
         return;
       }
