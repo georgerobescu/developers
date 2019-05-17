@@ -23,6 +23,19 @@
 </head>
 
 <body>
+  <div id="ethny-banner-container">
+    <div id="ethny-banner">
+      <div id="ethny-close">
+        <img id="ethny-close-svg" src="./assets/ethny/close.svg" alt="close">
+      </div>
+      <div id="ethny-copy">
+         Joining Us at ETHNY? &nbsp; Learn More
+      </div>
+      <div id="ethny-learn-more">
+        <img src="./assets/ethny/learn-more.svg" alt="learn-more">
+      </div>
+    </div>
+  </div>
   <div id="app">Loading...</div>
   <div class="social-container">
     <a href="https://github.com/airswap/developers" target="_blank">
@@ -56,6 +69,17 @@
         noData: 'No Results!'
       },
     }
+  </script>
+  <script type="text/javascript">
+    document.addEventListener('click', function(e) {
+      if (e.target && (e.target.id == 'ethny-banner-container' || e.target.id == 'ethny-copy' || e.target.id == 'ethny-learn-more')) {
+        window.open('https://medium.com/fluidity/airswap-ethnewyork-cf2d405c9926');
+      } else if (e.target && e.target.id == 'ethny-close' || e.target.id == 'ethny-close-svg') {
+        document.getElementById('ethny-banner-container').style.right = '-70vw';
+      } else {
+        return;
+      }
+    });
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
