@@ -23,16 +23,6 @@
 </head>
 
 <body>
-  <div id="ethny-banner-container">
-    <div id="ethny-banner">
-      <div id="ethny-close">
-        <img id="ethny-close-svg" src="./assets/ethny/close.svg" alt="close">
-      </div>
-      <div id="ethny-copy">
-         Joining Us for ETHNY? &nbsp; Learn More
-      </div>
-    </div>
-  </div>
   <div id="app">Loading...</div>
   <div class="social-container">
     <a href="https://github.com/airswap/developers" target="_blank">
@@ -66,17 +56,6 @@
         noData: 'No Results!'
       },
     }
-  </script>
-  <script type="text/javascript">
-    document.addEventListener('click', function(e) {
-      if (e.target && (e.target.id === 'ethny-banner-container' || e.target.id === 'ethny-copy')) {
-        window.open('https://medium.com/fluidity/airswap-ethnewyork-cf2d405c9926');
-      } else if (e.target && e.target.id == 'ethny-close' || e.target.id == 'ethny-close-svg') {
-        document.getElementById('ethny-banner-container').style.right = '-80vw';
-      } else {
-        return;
-      }
-    });
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
