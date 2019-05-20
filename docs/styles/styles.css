@@ -107,67 +107,6 @@ body .sidebar-toggle span:nth-child(3) {
   opacity: 1;
 }
 
-#ethny-banner-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: fixed;
-  height: 5vh;
-  right: 2vw;
-  top: 90vh;
-  padding: 3vh;
-  z-index: 10;
-  border-radius: 35px;
-  font-size: inherit;
-  font-weight: 600;
-  color: white;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
-  box-shadow: 0px 4px 20px 0px rgba(255, 128, 141, 0.5);
-  background: rgb(255, 64, 249);
-  background: -moz-linear-gradient(90deg, rgba(255, 64, 249, 1) 0%, rgba(255, 161, 83, 1) 100%);
-  background: -webkit-linear-gradient(90deg, rgba(255, 64, 249, 1) 0%, rgba(255, 161, 83, 1) 100%);
-  background: linear-gradient(90deg, rgba(255, 64, 249, 1) 0%, rgba(255, 161, 83, 1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff40f9", endColorstr="#ffa153", GradientType=1);
-  -webkit-transition: all 700ms ease-in-out;
-  -moz-transition: all 700ms ease-in-out;
-  -o-transition: all 700ms ease-in-out;
-  transition: all 700ms ease-in-out;
-}
-
-#ethny-banner-container:hover {
-  transform: scale(0.95);
-  cursor: pointer;
-}
-
-#ethny-banner {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-
-#ethny-copy:hover {
-  cursor: pointer;
-}
-
-#ethny-copy {
-  border-left: 1vw solid transparent;
-  border-right: 1vw solid transparent;
-}
-
-
-#ethny-close {
-  width: 1vw;
-}
-
-#ethny-close:hover {
-  opacity: 0.4;
-}
-
-#ethny-learn-more {
-  width: 1.2vw;
-}
 
 @media screen and (max-width: 768px) {
   body .sidebar-toggle {
@@ -184,17 +123,9 @@ body .sidebar-toggle span:nth-child(3) {
     display: none;
   }
 
-  #ethny-banner-container {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1350px) {
-  #ethny-close {
-    width: 0.7vw;
-  }
 
 }
+
 
 /****** Markdown General ******/
 .markdown-section {
